@@ -1,5 +1,5 @@
 {
-  "name": "react-scroll-spy",
+  "name": "react-spy-scroll",
   "version": "0.0.1",
   "description": "Scrollspy components for react",
   "main": "./dist/index.js",
