@@ -2,7 +2,7 @@ import React, { PropTypes as PT } from 'react';
 import CtxTypes from './ctx-types';
 import scroller from './scroller';
 
-function handleClick(onClick, event) {
+function handleClick(onClick, href, event) {
     event.stopPropagation();
     event.preventDefault();
 
@@ -10,13 +10,13 @@ function handleClick(onClick, event) {
         onClick(event);
     }
 
-    scroller.prepareToScroll(this.props.href);
+    scroller.prepareToScroll(href);
 }
 
 function anchor(Component) {
     function AnchorComponent(props) {
         const { onClick, ...restProps } = props;
-        restProps.onClick = handleClick.bind(this, onClick);
+        restProps.onClick = handleClick.bind(this, onClick, restProps.href);
 
         return <Component {...restProps} />;
     }
