@@ -31,7 +31,7 @@ AnchorElement.defaultProps = {
 AnchorElement.propTypes = {
     id: CtxTypes.id,
     offset: PT.number,
-    children: PT.element
+    children: PT.element.isRequired
 };
 
 export default AnchorElement;
