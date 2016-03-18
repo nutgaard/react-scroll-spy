@@ -1,4 +1,4 @@
-import requestAnimationFrame from './requestAnimationFrame';
+import requestAnimationFrame from './request-animation-frame';
 import TweenFunctions from 'tween-functions';
 
 class AnimateScroll {

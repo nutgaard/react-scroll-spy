@@ -14,9 +14,11 @@ function handleClick(onClick, href, event) {
 }
 
 function anchor(Component) {
-    function AnchorComponent(props) {
-        const { onClick, ...restProps } = props;
-        restProps.onClick = handleClick.bind(this, onClick, restProps.href);
+    function AnchorComponent({ onClick, ...props }) {
+        const restProps = {
+            ...props,
+            onClick: handleClick.bind(this, onClick, props.href)
+        };
 
         return <Component {...restProps} />;
     }
