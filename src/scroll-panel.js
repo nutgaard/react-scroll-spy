@@ -20,10 +20,11 @@ class ScrollPanel extends React.Component {
     }
 
     render() {
+        const { tag, children, ...elemProps } = this.props;
         return React.createElement(
-            this.props.tag,
-            { className: this.props.className, ref: 'container' },
-            this.props.children
+            tag,
+            { ...elemProps, ref: 'container' },
+            children
         );
     }
 }

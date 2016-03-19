@@ -28,7 +28,7 @@ class Scroller {
 
         const componentCoords = component.getBoundingClientRect();
         const containerCoords = container.getBoundingClientRect();
-        const scrollOffset = componentCoords.top - containerCoords.top;
+        const scrollOffset = container === document.body ? componentCoords.top - containerCoords.top : componentCoords.top - containerCoords.top + container.scrollTop;
 
         if (!config.animate) {
             container.scrollLeft = 0;
