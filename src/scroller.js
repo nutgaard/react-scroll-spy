@@ -44,7 +44,6 @@ class Scroller {
     }
 
     _handleScroll(e) {
-        console.time('scroll');
         const scrolledIn = e.target;
         const scrollOffset = scrolledIn.scrollTop;
 
@@ -63,7 +62,6 @@ class Scroller {
                 oldActive.link.classList.remove('active');
             }
         }
-        console.timeEnd('scroll');
     }
 
     _handleElementScroll(scrollOffset, container, {key, element}) {
