@@ -39,9 +39,10 @@ class Scroller {
             }
         } else {
             const animation = new AnimateScroll(config);
-            animation.start(id, component, scrollOffset);
+            animation.start(id, component, scrollOffset - config.offset);
         }
     }
 }
 
 export default new Scroller();
+

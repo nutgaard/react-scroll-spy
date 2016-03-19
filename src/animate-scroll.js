@@ -55,7 +55,7 @@ class AnimateScroll {
             currentPosition = AnimateScroll.easing(deltaT, this._startPosition, this._targetPosition, this._duration);
         }
 
-        this._container.scrollTop = currentPosition - this._options.offset;
+        this._container.scrollTop = currentPosition;
 
         if (deltaT < this._duration) {
             requestAnimationFrame(this.animate.bind(this));

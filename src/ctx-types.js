@@ -6,7 +6,10 @@ export const href = PT.string.isRequired;
 export const id = PT.string.isRequired;
 
 export const defaultConfig = {
-    offset: 0
+    offset: 0,
+    events: {},
+    animate: true,
+    container: undefined
 };
 
 export default {
