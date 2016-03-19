@@ -21,6 +21,7 @@ class Scroller {
         if (!this._scrollPanelRegister.includes(component)) {
             const listener = throttle(this._handleScroll.bind(this), 100);
             component.addEventListener('scroll', listener);
+            this._handleScroll({target: component});
             this._scrollPanelRegister.push({component, listener});
         }
     }
