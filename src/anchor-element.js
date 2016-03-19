@@ -12,10 +12,11 @@ class AnchorElement extends Component {
     }
 
     getConfig() {
+        const containerConfig = this.context.config || CtxTypes.defaultConfig;
+
         return {
-            offset: this.props.offset,
-            events: {},
-            animate: true
+            ...containerConfig,
+            ...this.props
         };
     }
 
@@ -32,6 +33,10 @@ AnchorElement.propTypes = {
     id: CtxTypes.id,
     offset: PT.number,
     children: PT.element.isRequired
+};
+
+AnchorElement.contextTypes = {
+    config: CtxTypes.config
 };
 
 export default AnchorElement;
