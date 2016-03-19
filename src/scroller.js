@@ -7,8 +7,8 @@ class Scroller {
         this._elementPanelRegister = {};
         this._linkRegister = {};
         this._scrollPanelRegister = [];
-        window.addEventListener('scroll', throttle(() => this._handleScroll({target: document.body}), 100));
-        this._handleScroll({target: document.body});
+        window.addEventListener('scroll', throttle(() => this._handleScroll({ target: document.body }), 100));
+        this._handleScroll({ target: document.body });
     }
 
     registerElementPanel(id, component) {
@@ -23,8 +23,8 @@ class Scroller {
         if (!this._scrollPanelRegister.includes(component)) {
             const listener = throttle(this._handleScroll.bind(this), 100);
             component.addEventListener('scroll', listener);
-            this._handleScroll({target: component});
-            this._scrollPanelRegister.push({component, listener});
+            this._handleScroll({ target: component });
+            this._scrollPanelRegister.push({ component, listener });
         }
     }
 
@@ -51,12 +51,12 @@ class Scroller {
         const scrollOffset = scrolledIn.scrollTop;
 
         const elements = Object.keys(this._elementPanelRegister)
-            .map((key) => ({key, element: ReactDOM.findDOMNode(this._elementPanelRegister[key])}))
-            .filter(({element}) => scrolledIn.contains(element))
+            .map((key) => ({ key, element: ReactDOM.findDOMNode(this._elementPanelRegister[key]) }))
+            .filter(({ element }) => scrolledIn.contains(element))
             .map(this._handleElementScroll.bind(this, scrollOffset, scrolledIn));
 
-        const newActive = elements.find(({isInside, hasActive}) => isInside && !hasActive);
-        const oldActive = elements.find(({isInside, hasActive}) => !isInside && hasActive);
+        const newActive = elements.find(({ isInside, hasActive }) => isInside && !hasActive);
+        const oldActive = elements.find(({ isInside, hasActive }) => !isInside && hasActive);
 
         if (newActive) {
             newActive.link.classList.add('active');
@@ -67,7 +67,7 @@ class Scroller {
         }
     }
 
-    _handleElementScroll(scrollOffset, container, {key, element}) {
+    _handleElementScroll(scrollOffset, container, { key, element }) {
         const cords = element.getBoundingClientRect();
         const containeRect = container.getBoundingClientRect();
         const link = ReactDOM.findDOMNode(this._linkRegister[key]);
