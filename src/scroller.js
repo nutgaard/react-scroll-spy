@@ -7,6 +7,8 @@ class Scroller {
         this._elementPanelRegister = {};
         this._linkRegister = {};
         this._scrollPanelRegister = [];
+        window.addEventListener('scroll', throttle(() => this._handleScroll({target: document.body}), 100));
+        this._handleScroll({target: document.body});
     }
 
     registerElementPanel(id, component) {
@@ -70,7 +72,12 @@ class Scroller {
         const containeRect = container.getBoundingClientRect();
         const link = ReactDOM.findDOMNode(this._linkRegister[key]);
 
-        const elemTopBound = cords.top + scrollOffset - containeRect.top - 64;
+        let elemTopBound = 0;
+        if (container === document.body) {
+            elemTopBound = cords.top - containeRect.top - 64;
+        } else {
+            elemTopBound = cords.top + scrollOffset - containeRect.top - 64;
+        }
         const elemBottomBound = elemTopBound + cords.height;
 
         return {
