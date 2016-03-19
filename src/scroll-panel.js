@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { PropTypes as PT } from 'react';
 import CtxTypes from './ctx-types';
+import Scroller from './scroller';
 
 class ScrollPanel extends React.Component {
     getChildContext() {
         const { offset, events, animate } = this.props;
 
-        //safe this, so it can be updated when component is mounted
+        // safe this, so it can be updated when component is mounted
         this.ctx = {
             config: {
                 offset, events, animate
@@ -17,10 +18,15 @@ class ScrollPanel extends React.Component {
 
     componentDidMount() {
         this.ctx.config.container = this.refs.container;
+        Scroller.registerScrollpanel(this.refs.container);
+    }
+
+    componentWillUnmount() {
+        Scroller.unregisterScrollpanel(this.refs.container);
     }
 
     render() {
-        const { tag, children, ...elemProps } = this.props;
+        const { tag, children, ...elemProps } = this.props; // eslint-disable-line no-use-before-define
         return React.createElement(
             tag,
             { ...elemProps, ref: 'container' },
@@ -39,6 +45,14 @@ ScrollPanel.defaultProps = {
 
 ScrollPanel.childContextTypes = {
     config: CtxTypes.config
+};
+
+ScrollPanel.propTypes = {
+    offset: PT.number,
+    events: PT.array,
+    animate: PT.bool,
+    tag: PT.string,
+    children: PT.element
 };
 
 export default ScrollPanel;

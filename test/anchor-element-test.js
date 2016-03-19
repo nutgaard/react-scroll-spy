@@ -7,15 +7,15 @@ import { mount } from 'enzyme';
 import AnchorElement from './../src/anchor-element';
 
 describe('AnchorElement', () => {
-    it('should register with scroller on mount', () => {
-        const register = spy();
-        const unregister = spy();
+    it('should registerElementPanel with scroller on mount', () => {
+        const registerElementPanel = spy();
+        const unregisterElementPanel = spy();
 
-        AnchorElement.__Rewire__('scroller', { register, unregister });
+        AnchorElement.__Rewire__('scroller', { registerElementPanel, unregisterElementPanel });
         mount(<AnchorElement><h1>Test</h1></AnchorElement>);
         AnchorElement.__ResetDependency__('scroller');
 
-        expect(register.calledOnce).to.equal(true);
-        expect(unregister.calledOnce).to.equal(false);
+        expect(registerElementPanel.calledOnce).to.equal(true);
+        expect(unregisterElementPanel.calledOnce).to.equal(false);
     });
 });

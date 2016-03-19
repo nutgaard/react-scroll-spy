@@ -4,11 +4,11 @@ import CtxTypes from './ctx-types';
 
 class AnchorElement extends Component {
     componentDidMount() {
-        scroller.register(this.props.id, this);
+        scroller.registerElementPanel(this.props.id, this);
     }
 
     componentWillUnmount() {
-        scroller.unregister(this.props.id);
+        scroller.unregisterElementPanel(this.props.id);
     }
 
     getConfig() {

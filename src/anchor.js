@@ -14,13 +14,23 @@ function handleClick(onClick, href, event) {
 }
 
 function anchor(Component) {
-    function AnchorComponent({ onClick, ...props }) {
-        const restProps = {
-            ...props,
-            onClick: handleClick.bind(this, onClick, props.href)
-        };
+    class AnchorComponent extends React.Component {
+        componentDidMount() {
+            scroller.registerLink(this.props.href, this);
+        }
 
-        return <Component {...restProps} />;
+        componentWillUnmount() {
+            scroller.unregisterLink(this.props.href);
+        }
+
+        render() {
+            const { onClick, ...props } = this.props; // eslint-disable-line no-use-before-define
+            const restProps = {
+                ...props,
+                onClick: handleClick.bind(this, onClick, props.href)
+            };
+            return <Component {...restProps} />;
+        }
     }
 
     AnchorComponent.displayName = `AnchorComponent(${Component.displayName || Component.name})`;

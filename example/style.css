@@ -4,6 +4,7 @@ html, body {
     width: 100%;
     height: 100%;
 }
+
 * {
     box-sizing: border-box;
 }
@@ -21,9 +22,14 @@ nav ul {
     padding: 0;
     margin: 0;
 }
+
 nav ul li {
     display: inline-block;
     margin-left: 1rem;
+}
+
+nav ul li a.active {
+    background-color: red;
 }
 
 main {

@@ -8,11 +8,11 @@ class Menu extends Component {
         return (
             <nav>
                 <ul>
-                    <AnchorLink href="item1">Item 1</AnchorLink>
-                    <AnchorLink href="item2">Item 2</AnchorLink>
-                    <AnchorLink href="item3">Item 3</AnchorLink>
-                    <AnchorLink href="item4">Item 4</AnchorLink>
-                    <AnchorLink href="item5">Item 5</AnchorLink>
+                    <li><AnchorLink href="item1">Item 1</AnchorLink></li>
+                    <li><AnchorLink href="item2">Item 2</AnchorLink></li>
+                    <li><AnchorLink href="item3">Item 3</AnchorLink></li>
+                    <li><AnchorLink href="item4">Item 4</AnchorLink></li>
+                    <li><AnchorLink href="item5">Item 5</AnchorLink></li>
                 </ul>
             </nav>
         );

@@ -10,8 +10,9 @@ import { AnchorButton } from './../src/index';
 describe('Anchor', () => {
     it('should call prepareToScroll onClick', () => {
         const prepareToScroll = spy();
+        const registerLink = spy();
 
-        anchor.__Rewire__('scroller', { prepareToScroll });
+        anchor.__Rewire__('scroller', { prepareToScroll, registerLink });
         const wrapper = mount(<AnchorButton><h1>Test</h1></AnchorButton>);
         wrapper.find('button').simulate('click');
         anchor.__ResetDependency__('scroller');
