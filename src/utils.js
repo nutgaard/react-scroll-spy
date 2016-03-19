@@ -18,3 +18,11 @@ export function throttle(fn, threshhold = 250, scope = this) {
         }
     };
 }
+
+
+export function filterUndefined(obj) {
+    return Object.keys(obj)
+        .map((key) => ({ key, value: obj[key] }))
+        .filter(({ value }) => !!value)
+        .reduce((acc, { key, value }) => ({ ...acc, [key]: value }), {});
+}

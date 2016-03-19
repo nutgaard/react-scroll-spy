@@ -1,5 +1,4 @@
 import React, { PropTypes as PT } from 'react';
-import CtxTypes from './ctx-types';
 import scroller from './scroller';
 
 function handleClick(onClick, href, event) {
@@ -35,12 +34,8 @@ function anchor(Component) {
 
     AnchorComponent.displayName = `AnchorComponent(${Component.displayName || Component.name})`;
     AnchorComponent.propTypes = {
-        href: CtxTypes.href,
+        href: PT.string.isRequired,
         onClick: PT.func
-    };
-
-    AnchorComponent.contextTypes = {
-        scrollspy: CtxTypes.config
     };
 
     return AnchorComponent;

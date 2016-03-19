@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { AnchorLink } from './../src/index';
 
-console.log('AnchorLink', AnchorLink);
-
 class Menu extends Component {
     render() {
         return (

@@ -5,20 +5,17 @@ import Scroller from './scroller';
 class ScrollPanel extends React.Component {
     getChildContext() {
         const { offset, events, animate } = this.props;
-
-        // safe this, so it can be updated when component is mounted
-        this.ctx = {
-            config: {
-                offset, events, animate
-            }
+        return {
+            offset,
+            events,
+            animate,
+            container: this.refs.container || document.body
         };
-
-        return this.ctx;
     }
 
     componentDidMount() {
-        this.ctx.config.container = this.refs.container;
         Scroller.registerScrollpanel(this.refs.container);
+        this.forceUpdate();
     }
 
     componentWillUnmount() {
@@ -43,16 +40,13 @@ ScrollPanel.defaultProps = {
     animate: true
 };
 
-ScrollPanel.childContextTypes = {
-    config: CtxTypes.config
-};
-
+ScrollPanel.childContextTypes = CtxTypes.contextTypes;
 ScrollPanel.propTypes = {
     offset: PT.number,
-    events: PT.array,
+    events: PT.object,
     animate: PT.bool,
     tag: PT.string,
-    children: PT.element
+    children: PT.arrayOf(PT.element)
 };
 
 export default ScrollPanel;

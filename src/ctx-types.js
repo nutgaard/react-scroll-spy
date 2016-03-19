@@ -1,9 +1,11 @@
 import { PropTypes as PT } from 'react';
 
-export const config = PT.object;
-
-export const href = PT.string.isRequired;
-export const id = PT.string.isRequired;
+export const contextTypes = {
+    offset: PT.number,
+    events: PT.object,
+    animate: PT.bool,
+    container: PT.object
+};
 
 export const defaultConfig = {
     offset: 0,
@@ -13,8 +15,6 @@ export const defaultConfig = {
 };
 
 export default {
-    config,
-    defaultConfig,
-    href,
-    id
+    contextTypes,
+    defaultConfig
 };

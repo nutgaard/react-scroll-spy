@@ -1,6 +1,7 @@
 import React, { PropTypes as PT, Component } from 'react';
 import scroller from './scroller';
 import CtxTypes from './ctx-types';
+import { filterUndefined } from './utils';
 
 class AnchorElement extends Component {
     componentDidMount() {
@@ -12,7 +13,7 @@ class AnchorElement extends Component {
     }
 
     getConfig() {
-        const containerConfig = this.context.config || CtxTypes.defaultConfig;
+        const containerConfig = { ...CtxTypes.defaultConfig, ...filterUndefined(this.context) };
 
         return {
             ...containerConfig,
@@ -30,13 +31,11 @@ AnchorElement.defaultProps = {
 };
 
 AnchorElement.propTypes = {
-    id: CtxTypes.id,
+    id: PT.string.isRequired,
     offset: PT.number,
     children: PT.element.isRequired
 };
 
-AnchorElement.contextTypes = {
-    config: CtxTypes.config
-};
+AnchorElement.contextTypes = CtxTypes.contextTypes;
 
 export default AnchorElement;
