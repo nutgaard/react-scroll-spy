@@ -24,11 +24,12 @@ class AnimateScroll {
     }
 
     _setupListeners() {
-        AnimateScroll.cancelEvent.forEach((e) => this._container.addEventListener(e, this.cancel.bind(this)));
+        this._listener = this.cancel.bind(this);
+        AnimateScroll.cancelEvent.forEach((e) => this._container.addEventListener(e, this._listener));
     }
 
     _teardownListeners() {
-        AnimateScroll.cancelEvent.forEach((e) => this._container.removeEventListener(e, this.cancel.bind(this)));
+        AnimateScroll.cancelEvent.forEach((e) => this._container.removeEventListener(e, this._listener));
     }
 
     start(id, component, targetPosition) {
