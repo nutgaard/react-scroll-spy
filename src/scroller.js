@@ -51,7 +51,11 @@ class Scroller {
         const scrollOffset = scrolledIn.scrollTop;
 
         const elements = Object.keys(this._elementPanelRegister)
-            .map((key) => ({ key, element: ReactDOM.findDOMNode(this._elementPanelRegister[key]) }))
+            .map((key) => ({
+                key,
+                component: this._elementPanelRegister[key],
+                element: ReactDOM.findDOMNode(this._elementPanelRegister[key])
+            }))
             .filter(({ element }) => scrolledIn.contains(element))
             .map(this._handleElementScroll.bind(this, scrollOffset, scrolledIn));
 
@@ -67,7 +71,7 @@ class Scroller {
         }
     }
 
-    _handleElementScroll(scrollOffset, container, { key, element }) {
+    _handleElementScroll(scrollOffset, container, { key, element, component }) {
         const cords = element.getBoundingClientRect();
         const containeRect = container.getBoundingClientRect();
         const link = ReactDOM.findDOMNode(this._linkRegister[key]);
@@ -84,7 +88,7 @@ class Scroller {
             key,
             link,
             hasActive: link.classList.contains('active'),
-            isInside: (scrollOffset >= elemTopBound && scrollOffset <= elemBottomBound)
+            isInside: component.props.isInside(scrollOffset, elemTopBound, elemBottomBound, cords, containeRect)
         };
     }
 

@@ -27,13 +27,16 @@ class AnchorElement extends Component {
 }
 
 AnchorElement.defaultProps = {
-    offset: 0
+    offset: 0,
+    isInside: (scrollOffset, elemTopBound, elemBottomBound) =>
+        (scrollOffset >= elemTopBound && scrollOffset <= elemBottomBound)
 };
 
 AnchorElement.propTypes = {
     id: PT.string.isRequired,
     offset: PT.number,
-    children: PT.element.isRequired
+    children: PT.element.isRequired,
+    isInside: PT.func
 };
 
 AnchorElement.contextTypes = CtxTypes.contextTypes;
