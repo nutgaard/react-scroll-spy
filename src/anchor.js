@@ -2,7 +2,9 @@
  * Exports a helper function which wraps clickable elements, hijacking onClick and passing it to the scroller
  */
 import React, { PropTypes as PT } from 'react';
+import ReactDOM from 'react-dom';
 import scroller from './scroller';
+import ScrollSpy from './scroll-spy';
 
 function handleClick(onClick, href, event) {
     event.stopPropagation();
@@ -17,12 +19,38 @@ function handleClick(onClick, href, event) {
 
 function anchor(Component) {
     class AnchorComponent extends React.Component {
+        constructor(props) {
+            super(props);
+
+            this._handleScroll = this._handleScroll.bind(this);
+        }
+
+        _handleScroll(scrollOffset, container, { panel, panelComp }) {
+            const link = ReactDOM.findDOMNode(this);
+            const cords = panel.getBoundingClientRect();
+            const containeRect = container.getBoundingClientRect();
+
+            let elemTopBound = 0;
+            if (container === document.body) {
+                elemTopBound = cords.top - containeRect.top - 64;
+            } else {
+                elemTopBound = cords.top + scrollOffset - containeRect.top - 64;
+            }
+            const elemBottomBound = elemTopBound + cords.height;
+
+            return {
+                link,
+                hasActive: link.classList.contains('active'),
+                isInside: panelComp.props.isInside(scrollOffset, elemTopBound, elemBottomBound, cords, containeRect)
+            };
+        }
+
         componentDidMount() {
-            scroller.registerLink(this.props.href, this);
+            ScrollSpy.registerLink(this);
         }
 
         componentWillUnmount() {
-            scroller.unregisterLink(this.props.href);
+            ScrollSpy.unregisterLink(this);
         }
 
         render() {

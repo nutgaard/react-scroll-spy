@@ -3,7 +3,7 @@
  */
 import React, { PropTypes as PT } from 'react';
 import CtxTypes from './ctx-types';
-import Scroller from './scroller';
+import ScrollSpy from './scroll-spy';
 
 class ScrollPanel extends React.Component {
     getChildContext() {
@@ -17,7 +17,7 @@ class ScrollPanel extends React.Component {
     }
 
     componentDidMount() {
-        Scroller.registerScrollpanel(this.refs.container);
+        ScrollSpy.registerScrollpanel(this.refs.container);
         this.forceUpdate();
     }
 
