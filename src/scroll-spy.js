@@ -10,7 +10,7 @@ class ScrollSpy {
         this._linksRegister = [];
         this._scrollPanelRegister = [];
         window.addEventListener('scroll', throttle(() =>
-            this._handleScroll({ target: document.body }), ScrollSpy.throttle)
+            this._handleScroll({ target: document.body }))
         );
         this._handleScroll({ target: document.body });
     }
@@ -23,7 +23,7 @@ class ScrollSpy {
 
     registerScrollpanel(component) {
         if (!this._scrollPanelRegister.includes(component)) {
-            const listener = throttle(this._handleScroll.bind(this), ScrollSpy.throttle);
+            const listener = throttle(this._handleScroll.bind(this));
             component.addEventListener('scroll', listener);
             this._handleScroll({ target: component });
             this._scrollPanelRegister.push({ component, listener });
@@ -74,7 +74,5 @@ class ScrollSpy {
         }
     }
 }
-
-ScrollSpy.throttle = 20;
 
 export default new ScrollSpy();
