@@ -1,3 +1,6 @@
+/**
+ * Class for executing and maintaining a smooth scroll-animation using TweenFunctions for easing
+ */
 import requestAnimationFrame from './request-animation-frame';
 import TweenFunctions from 'tween-functions';
 

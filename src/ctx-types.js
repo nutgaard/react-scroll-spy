@@ -1,3 +1,6 @@
+/**
+ * Proptypes used for the context
+ */
 import { PropTypes as PT } from 'react';
 
 export const contextTypes = {

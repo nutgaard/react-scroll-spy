@@ -1,3 +1,6 @@
+/**
+ * requestAnimationFrame provider, with polyfill
+ */
 function native() {
     if (window) {
         return window.requestAnimationFrame || window.webkitRequestAnimationFrame;

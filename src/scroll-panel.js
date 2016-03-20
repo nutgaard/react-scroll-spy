@@ -1,3 +1,6 @@
+/**
+ * A component to use when you want scrolling other places than the global document
+ */
 import React, { PropTypes as PT } from 'react';
 import CtxTypes from './ctx-types';
 import Scroller from './scroller';

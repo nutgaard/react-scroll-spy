@@ -1,3 +1,7 @@
+/**
+ * The exports for the library
+ */
+
 import React from 'react';
 
 import scroller from './scroller';

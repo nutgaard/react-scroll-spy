@@ -1,3 +1,6 @@
+/**
+ * Bookkeeper of elements, and responsible for calculating the new scroll positions and current activelink
+ */
 import ReactDOM from 'react-dom';
 import AnimateScroll from './animate-scroll';
 import { throttle } from './utils';

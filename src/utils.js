@@ -1,3 +1,6 @@
+/**
+ * Utility functions
+ */
 export function throttle(fn, threshhold = 250, scope = this) {
     let last;
     let deferTimer;
