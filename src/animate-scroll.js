@@ -36,7 +36,6 @@ class AnimateScroll {
     }
 
     start(id, component, targetPosition) {
-        this._setup();
         this._targetPosition = targetPosition;
         this._id = id;
         this._component = component;
