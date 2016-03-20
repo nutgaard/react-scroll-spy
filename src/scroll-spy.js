@@ -9,7 +9,9 @@ class ScrollSpy {
     constructor() {
         this._linksRegister = [];
         this._scrollPanelRegister = [];
-        window.addEventListener('scroll', throttle(() => this._handleScroll({ target: document.body }), 100));
+        window.addEventListener('scroll', throttle(() =>
+            this._handleScroll({ target: document.body }), ScrollSpy.throttle)
+        );
         this._handleScroll({ target: document.body });
     }
 
@@ -21,7 +23,7 @@ class ScrollSpy {
 
     registerScrollpanel(component) {
         if (!this._scrollPanelRegister.includes(component)) {
-            const listener = throttle(this._handleScroll.bind(this), 100);
+            const listener = throttle(this._handleScroll.bind(this), ScrollSpy.throttle);
             component.addEventListener('scroll', listener);
             this._handleScroll({ target: component });
             this._scrollPanelRegister.push({ component, listener });
@@ -64,13 +66,15 @@ class ScrollSpy {
         const oldActive = elements.find(({ isInside, hasActive }) => !isInside && hasActive);
 
         if (newActive) {
-            newActive.link.classList.add('active');
+            newActive.link.classList.add(newActive.activeClass);
 
             if (oldActive) {
-                oldActive.link.classList.remove('active');
+                oldActive.link.classList.remove(oldActive.activeClass);
             }
         }
     }
 }
+
+ScrollSpy.throttle = 20;
 
 export default new ScrollSpy();

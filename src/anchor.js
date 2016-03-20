@@ -48,7 +48,8 @@ function anchor(Component) {
 
             return {
                 link,
-                hasActive: link.classList.contains('active'),
+                activeClass: this.props.activeClass,
+                hasActive: link.classList.contains(this.props.activeClass),
                 isInside: panelComp.props.isInside(scrollOffset, elemTopBound, elemBottomBound, cords, containeRect)
             };
         }
@@ -66,7 +67,11 @@ function anchor(Component) {
     AnchorComponent.displayName = `AnchorComponent(${Component.displayName || Component.name})`;
     AnchorComponent.propTypes = {
         href: PT.string.isRequired,
-        onClick: PT.func
+        onClick: PT.func,
+        activeClass: PT.string
+    };
+    AnchorComponent.defaultProps = {
+        activeClass: 'scroll-spy-active'
     };
 
     return AnchorComponent;
