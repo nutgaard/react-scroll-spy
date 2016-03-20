@@ -1,9 +1,8 @@
 /**
- * Bookkeeper of elements, and responsible for calculating the new scroll positions and current activelink
+ * Responsible for calculating the new scroll positions
  */
 import ReactDOM from 'react-dom';
 import AnimateScroll from './animate-scroll';
-import { throttle } from './utils';
 
 class Scroller {
     constructor() {

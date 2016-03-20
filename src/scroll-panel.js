@@ -22,7 +22,7 @@ class ScrollPanel extends React.Component {
     }
 
     componentWillUnmount() {
-        Scroller.unregisterScrollpanel(this.refs.container);
+        ScrollSpy.unregisterScrollpanel(this.refs.container);
     }
 
     render() {
