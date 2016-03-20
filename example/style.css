@@ -14,7 +14,7 @@ nav {
     width: 100%;
     background-color: #f1f1f1;
     border-bottom: 1px solid #c1c1c1;
-    padding: 1rem;
+    padding: 0rem 2rem;
 }
 
 nav ul {
@@ -25,11 +25,19 @@ nav ul {
 
 nav ul li {
     display: inline-block;
-    margin-left: 1rem;
+    padding: 1rem 0rem;
+}
+
+nav ul li a {
+    padding: 1rem;
+    color: #333333;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 nav ul li a.active {
-    background-color: red;
+    background-color: #333333;
+    color: #f1f1f1;
+    padding-bottom: 1.5rem;
 }
 
 main {
