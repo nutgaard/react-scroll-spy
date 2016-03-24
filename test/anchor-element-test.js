@@ -43,7 +43,7 @@ describe('AnchorElement', () => {
         });
 
         it('should inherit from context', () => {
-            const ctx = { offset: 10, events: {test: 0}, animate: false, container: {} };
+            const ctx = { offset: 10, events: { test: 0 }, animate: false, container: {} };
             const wrapper = mount(<AnchorElement><h1>Test</h1></AnchorElement>, { context: ctx });
             const config = wrapper.node.getConfig();
 
@@ -52,10 +52,10 @@ describe('AnchorElement', () => {
         });
 
         it('should use props if present', () => {
-            const ctx = { offset: 10, events: {test: 0}, animate: false, container: {} };
-            const ctxWithProps = { ...ctx, offset: 20, animate: true};
+            const ctx = { offset: 10, events: { test: 0 }, animate: false, container: {} };
+            const ctxWithProps = { ...ctx, offset: 20, animate: true };
             const wrapper = mount(
-                <AnchorElement offset={20} animate={true}><h1>Test</h1></AnchorElement>, { context: ctx }
+                <AnchorElement offset={20} animate><h1>Test</h1></AnchorElement>, { context: ctx }
             );
             const config = wrapper.node.getConfig();
 

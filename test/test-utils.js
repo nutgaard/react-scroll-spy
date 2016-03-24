@@ -7,4 +7,4 @@ export function omit(obj, keys = []) {
             acc[key] = obj[key];
             return acc;
         }, {});
-};
+}
