@@ -6,7 +6,7 @@ import requestAnimationFrame from './request-animation-frame';
 export function filterUndefined(obj) {
     return Object.keys(obj)
         .map((key) => ({ key, value: obj[key] }))
-        .filter(({ value }) => !!value)
+        .filter(({ value }) => typeof value === 'boolean' || !!value)
         .reduce((acc, { key, value }) => ({ ...acc, [key]: value }), {});
 }
 

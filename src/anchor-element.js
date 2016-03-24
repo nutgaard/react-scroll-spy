@@ -30,7 +30,6 @@ class AnchorElement extends Component {
 }
 
 AnchorElement.defaultProps = {
-    offset: 0,
     isInside: (scrollOffset, elemTopBound, elemBottomBound) =>
         (scrollOffset >= elemTopBound && scrollOffset <= elemBottomBound)
 };
