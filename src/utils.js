@@ -6,7 +6,7 @@ import requestAnimationFrame from './request-animation-frame';
 export function filterUndefined(obj) {
     return Object.keys(obj)
         .map((key) => ({ key, value: obj[key] }))
-        .filter(({ value }) => typeof value === 'boolean' || !!value)
+        .filter(({ value }) => typeof value !== 'undefined')
         .reduce((acc, { key, value }) => ({ ...acc, [key]: value }), {});
 }
 
@@ -16,7 +16,7 @@ export function throttle(callback) {
     let self;
 
     function callbackCheck() {
-        if (args && self) {
+        if (args || self) {
             requestedFrame = requestAnimationFrame(callbackCheck);
             callback.apply(self, args);
         } else {

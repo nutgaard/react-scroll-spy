@@ -8,3 +8,7 @@ export function omit(obj, keys = []) {
             return acc;
         }, {});
 }
+
+export function later(fn, timeout = 0) {
+    return setTimeout(fn, timeout);
+}
