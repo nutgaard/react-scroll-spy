@@ -3,6 +3,9 @@ Scrollspy components for react
 
 [![travic-ci.org](https://travis-ci.org/nutgaard/react-scroll-spy.svg?branch=master)](https://travis-ci.org/nutgaard/react-scroll-spy)
 [![codecov.io](https://codecov.io/github/nutgaard/react-scroll-spy/coverage.svg?branch=master)](https://codecov.io/github/nutgaard/react-scroll-spy?branch=master)
+[![Dependency Status](https://david-dm.org/nutgaard/react-scroll-spy.svg)](https://david-dm.org/nutgaard/react-scroll-spy)
+[![devDependency Status](https://david-dm.org/nutgaard/react-scroll-spy/dev-status.svg)](https://david-dm.org/nutgaard/react-scroll-spy#info=devDependencies)
+[![peerDependency Status](https://david-dm.org/nutgaard/react-scroll-spy/peer-status.svg)](https://david-dm.org/nutgaard/react-scroll-spy#info=peerDependencies)
 
 ## How to install
 ```
