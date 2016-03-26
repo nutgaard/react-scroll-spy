@@ -14,16 +14,16 @@ class AnimateScroll {
 
         this._start = null;
         this._cancel = false;
-        this._startPosition = this._getCurrentPosition(options.container);
         this._duration = options.duration || 500;
         this._container = options.container || document.body || document.documentElement;
+        this._startPosition = this._getCurrentPosition(this._container);
         this._options = options;
         this._id = null;
         this._component = null;
     }
 
     _getCurrentPosition(container) {
-        return (container || document.body || document.documentElement).scrollTop;
+        return container.scrollTop;
     }
 
     _setupListeners() {
