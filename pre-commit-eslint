@@ -1,0 +1,31 @@
+#!/bin/sh
+
+echo "Running linting"
+
+files=$(git diff --cached --name-only --diff-filter=ACM | grep -E ".jsx?$")
+if [ "$files" = "" ]; then 
+    exit 0 
+fi
+
+pass=true
+
+echo "\nValidating JavaScript:\n"
+
+for file in ${files}; do
+    result=$(./node_modules/.bin/esw ${file} | grep "✓ Clean")
+    if [ "$result" != "" ]; then
+        echo "\t\033[32mESLint Passed: ${file}\033[0m"
+    else
+        echo "\t\033[31mESLint Failed: ${file}\033[0m"
+        pass=false
+    fi
+done
+
+echo "\nJavaScript validation complete\n"
+
+if ! $pass; then
+    echo "\033[41mCOMMIT FAILED:\033[0m Your commit contains files that should pass ESLint but do not. Please fix the ESLint errors and try again.\n"
+    exit 1
+else
+    echo "\033[42mCOMMIT SUCCEEDED\033[0m\n"
+fi
