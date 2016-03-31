@@ -1,7 +1,7 @@
 # react-spy-scroll
 Scrollspy components for react
 
-[![travic-ci.org](https://travis-ci.org/nutgaard/react-scroll-spy.svg?branch=master)](https://travis-ci.org/nutgaard/react-scroll-spy)
+[![circleci.com](https://circleci.com/gh/nutgaard/react-scroll-spy/tree/master.svg?style=shield&circle-token=05a159f51aa45260e4ed1f74ddbdc2ff896bc8ab)](https://circleci.com/gh/nutgaard/react-scroll-spy/tree/master)
 [![codecov.io](https://codecov.io/github/nutgaard/react-scroll-spy/coverage.svg?branch=master)](https://codecov.io/github/nutgaard/react-scroll-spy?branch=master)
 [![Dependency Status](https://david-dm.org/nutgaard/react-scroll-spy.svg)](https://david-dm.org/nutgaard/react-scroll-spy)
 [![devDependency Status](https://david-dm.org/nutgaard/react-scroll-spy/dev-status.svg)](https://david-dm.org/nutgaard/react-scroll-spy#info=devDependencies)
