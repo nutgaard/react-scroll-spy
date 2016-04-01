@@ -81,7 +81,7 @@ describe('AnimateScroll', () => {
             expect(easingSpy.callCount).to.be.above(1);
         });
         // Needs a greater duration to get more animationsFrames
-        const scroller = new AnimateScroll({ ...config, duration: 30 });
+        const scroller = new AnimateScroll({ ...config, duration: 40 });
         scroller.start();
     });
 

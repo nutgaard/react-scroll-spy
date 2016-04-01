@@ -30,6 +30,9 @@ class Scroller {
 
         const config = element.getConfig();
         const component = ReactDOM.findDOMNode(element);
+        if (config.events && config.events.start) {
+            config.events.start(id, component);
+        }
 
         const container = config.container || document.body;
 
@@ -47,7 +50,7 @@ class Scroller {
             container.scrollLeft = 0;
             container.scrollTop = scrollOffset - config.offset;
 
-            if (config.events.end) {
+            if (config.events && config.events.end) {
                 config.events.end(id, component);
             }
         } else {

@@ -46,6 +46,9 @@ class AnimateScroll {
     animate(time) {
         if (this._start === null) {
             this._start = time;
+            if (this._options.events && this._options.events.start) {
+                this._options.events.start(this._id, this._component);
+            }
         }
         if (this._cancel) {
             return;
@@ -64,7 +67,9 @@ class AnimateScroll {
             requestAnimationFrame(this.animate.bind(this));
         } else {
             this._teardownListeners();
-            this._options.events.end(this._id, this._component);
+            if (this._options.events && this._options.events.end) {
+                this._options.events.end(this._id, this._component);
+            }
         }
     }
 
