@@ -49,7 +49,8 @@ ScrollPanel.propTypes = {
     events: PT.object,
     animate: PT.bool,
     tag: PT.string,
-    children: PT.arrayOf(PT.element)
+    children: PT.arrayOf(PT.element),
+    className: PT.string
 };
 
 export default ScrollPanel;

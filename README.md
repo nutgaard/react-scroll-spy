@@ -19,11 +19,49 @@ TODO
 TODO
 
 ### The default behaviour
-TODO
-                                                
-|    PropName   |    PropType   |    Default    |  Description      |
-| ------------- | ------------- | ------------- | ----------------- |
-| `prop`        | `type`        | `default`     | description       |
+
+The library introduces four components; `AnchorLink`, `AnchorButton`, `AnchorElement` and `ScrollPanel`.
+The link and button are simple `a` and `button` tags wrapped in the `Anchor` component for ease of use.
+
+To get startet you only need some `AnchorXXXX`s and `AnchorElements` with matching `href` and `id` props.
+If you want a scrolling area within your page, e.g. not a page-scroll, you can wrap your `AnhorElements` in a `ScrollPanel`.
+
+`AnchorElements` have useful defaults by them self, but will inherit configuration from its parent `ScrollPanel` if one exists.
+If by change a `AnchorElement` defines a props which is also present at its parent `ScrollPanel` then the `AnchorElements` config will be used.
+
+
+#### Anchor
+
+|    PropName   |    PropType           |    Default            |  Description      |
+| ------------- | --------------------- | --------------------- | ----------------- |
+| `href`        | `PT.string.isRequired`| None                  | Reference to AnchorElement's `id`  |
+| `onClick`     | `PT.func`             | None                  | `onClick` handler  |
+| `activeClass` | `PT.string`           | `scroll-spy-active`   | The class given to an `Anchor` when its `AnchorElement` is active  |
+
+#### AnchorElement
+
+|    PropName   |    PropType               |    Default    |  Description                      |
+| ------------- | ------------------------- | ------------- | --------------------------------- |
+| `id`          | `PT.string.isRequired`    | None          | An elements `id`                  |
+| `offset`      | `PT.number`               | None          | Scroll offset                     |
+| `children`    | `PT.element.isRequired`   | None          | React children                    |
+| `isInside`    | `PT.func`                 | See below     | Checking if element is in view    |
+
+```javascript
+isInside: (scrollOffset, elemTopBound, elemBottomBound) =>
+        (scrollOffset >= elemTopBound && scrollOffset <= elemBottomBound)
+```
+
+#### ScrollPanel
+
+|    PropName   |    PropType               |    Default    |  Description                      |
+| ------------- | ------------------------- | ------------- | --------------------------------- |
+| `offset`      | `PT.number`               | `0`           | Scroll offset                     |
+| `events`      | `PT.object`               | `{}`          | Callbacks for start/end of scroll |
+| `animate`     | `PT.bool`                 | `true`        | Animated scroll                   |
+| `tag`         | `PT.string`               | `div`         | DOM-tag                           |
+| `className`   | `PT.string`               | `scroll-panel`| Classname                         |
+| `children`    | `PT.arrayOf(PT.element)`  | None          | React-children                    |
 
 
 ## Peer dependencies
@@ -31,6 +69,5 @@ This component has the newest react and react-router as peerdependenies, but wil
 If you test the component with lower versions of react and/or react-router please let me know so that the dependencies can be adjusted.
 
 ```
-"react": "^0.14.7",
-"react-router": "^2.0.0"
+"react": "^0.14.7"
 ```
