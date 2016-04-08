@@ -60,7 +60,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "peerDependencies": {
-    "react": "^0.14.7"
+    "react": "^15.0.0"
   },
   "dependencies": {
     "tween-functions": "^1.2.0"
