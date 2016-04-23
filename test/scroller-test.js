@@ -72,7 +72,7 @@ describe('Scroller', () => {
     describe('prepareToScroll', () => {
         it('should throw Error if element was not found', () => {
             const error = 'Could not find any component with id: dummy';
-            expect(() => scroller.prepareToScroll('dummy')).to.throw(error)
+            expect(() => scroller.prepareToScroll('dummy')).to.throw(error);
         });
 
         it('should fetch config from the component', () => {
@@ -86,6 +86,6 @@ describe('Scroller', () => {
 
             expect(element.getConfig.calledOnce).to.equal(true);
             expect(component.getBoundingClientRect.calledOnce).to.equal(true);
-        })
+        });
     });
 });
