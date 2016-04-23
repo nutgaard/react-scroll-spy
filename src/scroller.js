@@ -4,7 +4,7 @@
 import ReactDOM from 'react-dom';
 import AnimateScroll from './animate-scroll';
 
-class Scroller {
+export class Scroller {
     constructor() {
         this._elementPanelRegister = {};
     }
