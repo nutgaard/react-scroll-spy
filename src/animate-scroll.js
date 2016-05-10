@@ -37,7 +37,7 @@ class AnimateScroll {
         this._id = id;
         this._component = component;
         this._setupListeners();
-        
+
         requestAnimationFrame(this.animate.bind(this));
     }
 
@@ -72,7 +72,6 @@ class AnimateScroll {
             if (this._options.events && this._options.events.end) {
                 this._options.events.end(this._id, this._component);
             }
-
         }
     }
 

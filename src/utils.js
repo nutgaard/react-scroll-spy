@@ -36,9 +36,11 @@ export function throttle(callback) {
 export function getScrollYPosition(container) {
     if (container === document.body) {
         const supportPageOffset = window.pageXOffset !== undefined;
-        const isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
-        return supportPageOffset ? window.pageYOffset : isCSS1Compat ? 
-            document.documentElement.scrollTop : document.body.scrollTop;
+        const isCSS1Compat = ((document.compatMode || '') === 'CSS1Compat');
+        if (supportPageOffset) {
+            return window.pageYOffset;
+        }
+        return isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
     }
     return container.scrollTop;
 }
