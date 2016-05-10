@@ -2,7 +2,7 @@
  * The class responsible for keeping track of scrolling
  */
 import ReactDOM from 'react-dom';
-import { throttle } from './utils';
+import { throttle, getScrollYPosition } from './utils';
 import Scroller from './scroller';
 
 class ScrollSpy {
@@ -49,7 +49,7 @@ class ScrollSpy {
 
     _handleScroll(e) {
         const scrolledIn = e.target;
-        const scrollOffset = scrolledIn.scrollTop;
+        const scrollOffset = getScrollYPosition(scrolledIn);
 
         const elements = this._linksRegister
             .map((link) => ({ link, href: link.props.href }))

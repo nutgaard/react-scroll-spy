@@ -3,6 +3,7 @@
  */
 import requestAnimationFrame from './request-animation-frame';
 import TweenFunctions from 'tween-functions';
+import { getScrollYPosition } from './utils';
 
 class AnimateScroll {
     constructor(options) {
@@ -16,14 +17,10 @@ class AnimateScroll {
         this._cancel = false;
         this._duration = options.duration || 500;
         this._container = options.container || document.body || document.documentElement;
-        this._startPosition = this._getCurrentPosition(this._container);
+        this._startPosition = getScrollYPosition(this._container);
         this._options = options;
         this._id = null;
         this._component = null;
-    }
-
-    _getCurrentPosition(container) {
-        return container.scrollTop;
     }
 
     _setupListeners() {
@@ -40,6 +37,7 @@ class AnimateScroll {
         this._id = id;
         this._component = component;
         this._setupListeners();
+
         requestAnimationFrame(this.animate.bind(this));
     }
 
@@ -61,7 +59,11 @@ class AnimateScroll {
             currentPosition = AnimateScroll.easing(deltaT, this._startPosition, this._targetPosition, this._duration);
         }
 
-        this._container.scrollTop = currentPosition;
+        if (this._container === document.body) {
+            window.scrollTo(0, currentPosition);
+        } else {
+            this._container.scrollTop = currentPosition;
+        }
 
         if (deltaT < this._duration) {
             requestAnimationFrame(this.animate.bind(this));

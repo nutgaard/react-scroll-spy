@@ -4,7 +4,7 @@ import { ScrollPanel } from './../src/index';
 
 function MainContent() {
     return (
-        <ScrollPanel tag="main" style={{overflow: 'scroll', width: '100%', height: '650px'}}>
+        <ScrollPanel tag="main" style={{overflow: 'scroll', width: '100%', height: '650px', display: 'block'}}>
             <Content id="item1" header="Item 1" />
             <Content id="item2" header="Item 2" />
             <Content id="item3" header="Item 3" />
