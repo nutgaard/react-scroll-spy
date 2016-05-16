@@ -5,6 +5,8 @@ import requestAnimationFrame from './request-animation-frame';
 import TweenFunctions from 'tween-functions';
 import { getScrollYPosition } from './utils';
 
+const fn = (value) => typeof value === 'function' ? value : () => value;
+
 class AnimateScroll {
     constructor(options) {
         this._setup(options);
@@ -15,7 +17,7 @@ class AnimateScroll {
 
         this._start = null;
         this._cancel = false;
-        this._duration = options.duration || 500;
+        this._duration = options.duration ? fn(options.duration) : fn(500);
         this._container = options.container || document.body || document.documentElement;
         this._startPosition = getScrollYPosition(this._container);
         this._options = options;
@@ -34,6 +36,7 @@ class AnimateScroll {
 
     start(id, component, targetPosition) {
         this._targetPosition = targetPosition;
+        this._duration = this._duration(this._targetPosition - this._startPosition);
         this._id = id;
         this._component = component;
         this._setupListeners();

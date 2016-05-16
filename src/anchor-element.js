@@ -38,7 +38,8 @@ AnchorElement.propTypes = {
     id: PT.string.isRequired,
     offset: PT.number,
     children: PT.element.isRequired,
-    isInside: PT.func
+    isInside: PT.func,
+    duration: PT.oneOfType([PT.number, PT.func])
 };
 
 AnchorElement.contextTypes = CtxTypes.contextTypes;

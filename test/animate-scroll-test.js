@@ -47,7 +47,7 @@ describe('AnimateScroll', () => {
             expect(scroller._start).to.equal(null);
             expect(scroller._cancel).to.equal(false);
             expect(scroller._startPosition).to.equal(0);
-            expect(scroller._duration).to.equal(500);
+            expect(scroller._duration()).to.equal(500);
             expect(scroller._container).to.equal(document.body);
             expect(scroller._options).to.deep.equal(defaultConfig);
             expect(scroller._id).to.equal(null);
