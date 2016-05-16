@@ -62,16 +62,11 @@ class ScrollSpy {
             .map(({ link, panelComp, panel }) => link._handleScroll(scrollOffset, scrolledIn, { panel, panelComp }));
 
 
-        const newActive = elements.find(({ isInside, hasActive }) => isInside && !hasActive);
-        const oldActive = elements.find(({ isInside, hasActive }) => !isInside && hasActive);
+        const newActive = elements.filter(({ isInside, hasActive }) => isInside && !hasActive);
+        const oldActive = elements.filter(({ isInside, hasActive }) => !isInside && hasActive);
 
-        if (newActive) {
-            newActive.link.classList.add(newActive.activeClass);
-
-            if (oldActive) {
-                oldActive.link.classList.remove(oldActive.activeClass);
-            }
-        }
+        newActive.forEach(({ link, activeClass }) => link.classList.add(activeClass));
+        oldActive.forEach(({ link, activeClass }) => link.classList.remove(activeClass));
     }
 }
 
