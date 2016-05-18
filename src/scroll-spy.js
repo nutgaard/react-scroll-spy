@@ -51,7 +51,7 @@ class ScrollSpy {
         const scrolledIn = e.target;
         const scrollOffset = getScrollYPosition(scrolledIn);
 
-        const elements = this._linksRegister
+        let elements = this._linksRegister
             .map((link) => ({ link, href: link.props.href }))
             .map(({ link, href }) => ({
                 link, href,
@@ -59,8 +59,9 @@ class ScrollSpy {
                 panel: ReactDOM.findDOMNode(Scroller.getElementPanel(href))
             }))
             .filter(({ panel }) => scrolledIn.contains(panel))
-            .map(({ link, panelComp, panel }) => link._handleScroll(scrollOffset, scrolledIn, { panel, panelComp }));
+            .map((elem) => elem.link._handleScroll(scrollOffset, scrolledIn, elem));
 
+        elements = ScrollSpy.consolidateActiveState(scrollOffset, elements);
 
         const newActive = elements.filter(({ isInside, hasActive }) => isInside && !hasActive);
         const oldActive = elements.filter(({ isInside, hasActive }) => !isInside && hasActive);
@@ -69,5 +70,15 @@ class ScrollSpy {
         oldActive.forEach(({ link, activeClass }) => link.classList.remove(activeClass));
     }
 }
+
+ScrollSpy.consolidateActiveState = (scrollOffset, elements) => elements
+    .map((elementConfig) => {
+        const { panelComp, isInside: { elementTop, elementBottom, element, container } } = elementConfig;
+
+        return {
+            ...elementConfig,
+            isInside: panelComp.props.isInside(scrollOffset, elementTop, elementBottom, element, container)
+        };
+    });
 
 export default new ScrollSpy();

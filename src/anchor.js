@@ -33,9 +33,9 @@ function anchor(Component) {
             ScrollSpy.unregisterLink(this);
         }
 
-        _handleScroll(scrollOffset, container, { panel, panelComp }) {
+        _handleScroll(scrollOffset, container, element) {
             const link = ReactDOM.findDOMNode(this);
-            const cords = panel.getBoundingClientRect();
+            const cords = element.panel.getBoundingClientRect();
             const containeRect = container.getBoundingClientRect();
 
             let elemTopBound = 0;
@@ -47,10 +47,16 @@ function anchor(Component) {
             const elemBottomBound = elemTopBound + cords.height;
 
             return {
+                ...element,
                 link,
                 activeClass: this.props.activeClass,
                 hasActive: link.classList.contains(this.props.activeClass),
-                isInside: panelComp.props.isInside(scrollOffset, elemTopBound, elemBottomBound, cords, containeRect)
+                isInside: {
+                    elementTop: elemTopBound,
+                    elementBottom: elemBottomBound,
+                    element: cords,
+                    container: containeRect
+                }
             };
         }
 
