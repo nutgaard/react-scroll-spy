@@ -64,7 +64,7 @@ function anchor(Component) {
             const { onClick, ...props } = this.props; // eslint-disable-line no-use-before-define
             const restProps = {
                 ...props,
-                onClick: handleClick.bind(this, onClick, props.href)
+                onClick: (event) => handleClick(onClick, props.href, event)
             };
             return <Component {...restProps} />;
         }
