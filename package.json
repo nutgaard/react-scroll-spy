@@ -54,16 +54,16 @@
     "jsdom": "9.4.0",
     "mocha": "2.5.3",
     "npm-run-all": "2.3.0",
-    "react": "15.2.0",
-    "react-addons-test-utils": "15.2.0",
-    "react-dom": "15.2.0",
+    "react": "15.2.1",
+    "react-addons-test-utils": "15.2.1",
+    "react-dom": "15.2.1",
     "sinon": "1.17.4",
     "webpack": "1.13.1",
     "webpack-dev-server": "1.14.1"
   },
   "peerDependencies": {
-    "react": "^0.14.7 || 15.0.1",
-    "react-dom": "^0.14.7 || 15.0.1"
+    "react": "^0.14.7 || ^15.0.1",
+    "react-dom": "^0.14.7 || ^15.0.1"
   },
   "dependencies": {
     "tween-functions": "^1.2.0"
