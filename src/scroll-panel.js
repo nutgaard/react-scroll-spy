@@ -1,9 +1,11 @@
+/* eslint-env browser  */
 /**
  * A component to use when you want scrolling other places than the global document
  */
 import React, { PropTypes as PT } from 'react';
 import CtxTypes from './ctx-types';
 import ScrollSpy from './scroll-spy';
+import { omit } from './utils';
 
 class ScrollPanel extends React.Component {
     getChildContext() {
@@ -12,24 +14,24 @@ class ScrollPanel extends React.Component {
             offset,
             events,
             animate,
-            container: this.refs.container || document.body
+            container: this.container || document.body
         };
     }
 
     componentDidMount() {
-        ScrollSpy.registerScrollpanel(this.refs.container);
+        ScrollSpy.registerScrollpanel(this.container);
         this.forceUpdate();
     }
 
     componentWillUnmount() {
-        ScrollSpy.unregisterScrollpanel(this.refs.container);
+        ScrollSpy.unregisterScrollpanel(this.container);
     }
 
     render() {
         const { tag, children, ...elemProps } = this.props; // eslint-disable-line no-use-before-define
         return React.createElement(
             tag,
-            { ...elemProps, ref: 'container' },
+            { ...omit(elemProps, ['events', 'animate']), ref: (container) => { this.container = container; } },
             children
         );
     }

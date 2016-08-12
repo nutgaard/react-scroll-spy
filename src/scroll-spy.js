@@ -1,3 +1,4 @@
+/* eslint-env browser  */
 /**
  * The class responsible for keeping track of scrolling
  */
@@ -54,8 +55,10 @@ class ScrollSpy {
         let elements = this._linksRegister
             .map((link) => ({ link, href: link.props.href }))
             .map(({ link, href }) => ({
-                link, href,
+                link,
+                href,
                 panelComp: Scroller.getElementPanel(href),
+                // eslint-disable-next-line react/no-find-dom-node
                 panel: ReactDOM.findDOMNode(Scroller.getElementPanel(href))
             }))
             .filter(({ panel }) => scrolledIn.contains(panel))

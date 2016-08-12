@@ -1,4 +1,4 @@
-/* eslint-env node, mocha */
+/* eslint-env node, browser, mocha */
 /* eslint-disable newline-per-chained-call */
 import { expect } from 'chai';
 import { spy } from 'sinon';
@@ -21,8 +21,8 @@ describe('AnimateScroll', () => {
     });
 
     describe('initializing and setup', () => {
-        let addListener = undefined;
-        let removeListener = undefined;
+        let addListener;
+        let removeListener;
 
         beforeEach(() => {
             // JSDOM doesnt add attributes to document.body
