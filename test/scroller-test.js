@@ -2,10 +2,10 @@
 /* eslint-disable newline-per-chained-call */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AnchorElement from './../src/anchor-element';
 import { mount } from 'enzyme';
 import { spy } from 'sinon';
 import { expect } from 'chai';
+import AnchorElement from './../src/anchor-element';
 import { Scroller } from './../src/scroller';
 
 // Utils
@@ -77,6 +77,7 @@ describe('Scroller', () => {
 
         it('should fetch config from the component', () => {
             const element = createAnchorElement();
+            // eslint-disable-next-line react/no-find-dom-node
             const component = ReactDOM.findDOMNode(element);
             spy(component, 'getBoundingClientRect');
 

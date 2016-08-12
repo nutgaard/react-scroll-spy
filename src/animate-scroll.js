@@ -1,8 +1,9 @@
+/* eslint-env browser  */
 /**
  * Class for executing and maintaining a smooth scroll-animation using TweenFunctions for easing
  */
-import requestAnimationFrame from './request-animation-frame';
 import TweenFunctions from 'tween-functions';
+import requestAnimationFrame from './request-animation-frame';
 import { getScrollYPosition } from './utils';
 
 const fn = (value) => typeof value === 'function' ? value : () => value;

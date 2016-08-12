@@ -1,8 +1,8 @@
-/* eslint-env node, mocha */
+/* eslint-env node, browser, mocha */
 /* eslint-disable newline-per-chained-call */
 import { expect } from 'chai';
 import { spy, mock } from 'sinon';
-import { filterUndefined, throttle, __RewireAPI__ as RewireAPI } from './../src/utils';
+import { filterUndefined, throttle, omit as prodOmit, __RewireAPI__ as RewireAPI } from './../src/utils';
 import { omit, later } from './test-utils';
 
 describe('Utils', () => {
@@ -76,6 +76,29 @@ describe('Utils', () => {
             }, 30);
 
             RewireAPI.__ResetDependency__('requestAnimationFrame');
+        });
+    });
+
+    describe('omit', () => {
+        it('should not alter object if no exclusions are defined', () => {
+            const obj = { a: 1, b: 2, c: 'test' };
+            const result = prodOmit(obj);
+
+            expect(result).to.deep.equal(obj);
+        });
+
+        it('should remove exclusions', () => {
+            const obj = { a: 1, b: 2, c: 'test', d: 'one more' };
+            const result = prodOmit(obj, ['c', 'd']);
+
+            expect(result).to.deep.equal({ a: 1, b: 2 });
+        });
+
+        it('should exclusions not present in object', () => {
+            const obj = { a: 1, b: 2, c: 'test', d: 'one more' };
+            const result = prodOmit(obj, ['e', 'f']);
+
+            expect(result).to.deep.equal(obj);
         });
     });
 });

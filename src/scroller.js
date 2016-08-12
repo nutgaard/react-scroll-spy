@@ -1,3 +1,4 @@
+/* eslint-env browser  */
 /**
  * Responsible for calculating the new scroll positions
  */
@@ -29,6 +30,7 @@ export class Scroller {
         }
 
         const config = element.getConfig();
+        // eslint-disable-next-line react/no-find-dom-node
         const component = ReactDOM.findDOMNode(element);
         if (config.events && config.events.start) {
             config.events.start(id, component);
@@ -43,7 +45,7 @@ export class Scroller {
         if (container === document.body) {
             scrollOffset = componentCoords.top - containerCoords.top;
         } else {
-            scrollOffset = componentCoords.top - containerCoords.top + container.scrollTop;
+            scrollOffset = (componentCoords.top - containerCoords.top) + container.scrollTop;
         }
 
         if (!config.animate) {

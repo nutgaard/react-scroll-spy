@@ -1,3 +1,4 @@
+/* eslint-env browser  */
 /**
  * Exports a helper function which wraps clickable elements, hijacking onClick and passing it to the scroller
  */
@@ -5,6 +6,7 @@ import React, { PropTypes as PT } from 'react';
 import ReactDOM from 'react-dom';
 import scroller from './scroller';
 import ScrollSpy from './scroll-spy';
+import { omit } from './utils';
 
 function handleClick(onClick, href, event) {
     event.stopPropagation();
@@ -34,6 +36,7 @@ function anchor(Component) {
         }
 
         _handleScroll(scrollOffset, container, element) {
+            // eslint-disable-next-line react/no-find-dom-node
             const link = ReactDOM.findDOMNode(this);
             const cords = element.panel.getBoundingClientRect();
             const containeRect = container.getBoundingClientRect();
@@ -42,7 +45,7 @@ function anchor(Component) {
             if (container === document.body) {
                 elemTopBound = cords.top - containeRect.top - 64;
             } else {
-                elemTopBound = cords.top + scrollOffset - containeRect.top - 64;
+                elemTopBound = (cords.top + scrollOffset) - containeRect.top - 64;
             }
             const elemBottomBound = elemTopBound + cords.height;
 
@@ -63,7 +66,7 @@ function anchor(Component) {
         render() {
             const { onClick, ...props } = this.props; // eslint-disable-line no-use-before-define
             const restProps = {
-                ...props,
+                ...omit(props, ['activeClass']),
                 onClick: (event) => handleClick(onClick, props.href, event)
             };
             return <Component {...restProps} />;
