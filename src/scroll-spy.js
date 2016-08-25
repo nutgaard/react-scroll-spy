@@ -4,7 +4,7 @@
  */
 import ReactDOM from 'react-dom';
 import { throttle, getScrollYPosition } from './utils';
-import Scroller from './scroller';
+import Scroller from './scroller'; // eslint-disable-line import/no-named-as-default
 
 class ScrollSpy {
     constructor() {
