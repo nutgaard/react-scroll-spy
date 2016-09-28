@@ -14,7 +14,7 @@ describe('AnchorElement', () => {
         const unregisterElementPanel = spy();
 
         AnchorElement.__Rewire__('scroller', { registerElementPanel, unregisterElementPanel });
-        mount(<AnchorElement><h1>Test</h1></AnchorElement>);
+        mount(<AnchorElement id="test"><h1>Test</h1></AnchorElement>);
         AnchorElement.__ResetDependency__('scroller');
 
         expect(registerElementPanel.calledOnce).to.equal(true);
@@ -26,7 +26,7 @@ describe('AnchorElement', () => {
         const unregisterElementPanel = spy();
 
         AnchorElement.__Rewire__('scroller', { registerElementPanel, unregisterElementPanel });
-        const wrapper = mount(<AnchorElement><h1>Test</h1></AnchorElement>);
+        const wrapper = mount(<AnchorElement id="test"><h1>Test</h1></AnchorElement>);
         wrapper.unmount();
         AnchorElement.__ResetDependency__('scroller');
 
@@ -36,31 +36,31 @@ describe('AnchorElement', () => {
 
     describe('getConfig', () => {
         it('should return defaults if no props are provided', () => {
-            const wrapper = mount(<AnchorElement><h1>Test</h1></AnchorElement>);
+            const wrapper = mount(<AnchorElement id="test"><h1>Test</h1></AnchorElement>);
             const config = wrapper.node.getConfig();
 
-            expect(omit(config, ['children', 'isInside'])).to.deep.equal(defaultConfig);
+            expect(omit(config, ['children', 'isInside', 'id'])).to.deep.equal(defaultConfig);
         });
 
         it('should inherit from context', () => {
             const ctx = { offset: 10, events: { test: 0 }, animate: false, container: {} };
-            const wrapper = mount(<AnchorElement><h1>Test</h1></AnchorElement>, { context: ctx });
+            const wrapper = mount(<AnchorElement id="test"><h1>Test</h1></AnchorElement>, { context: ctx });
             const config = wrapper.node.getConfig();
 
-            expect(omit(config, ['children', 'isInside'])).to.not.deep.equal(defaultConfig);
-            expect(omit(config, ['children', 'isInside'])).to.deep.equal(ctx);
+            expect(omit(config, ['children', 'isInside', 'id'])).to.not.deep.equal(defaultConfig);
+            expect(omit(config, ['children', 'isInside', 'id'])).to.deep.equal(ctx);
         });
 
         it('should use props if present', () => {
             const ctx = { offset: 10, events: { test: 0 }, animate: false, container: {} };
             const ctxWithProps = { ...ctx, offset: 20, animate: true };
-            const wrapper = mount(<AnchorElement offset={20} animate><h1>Test</h1></AnchorElement>, { context: ctx });
+            const wrapper = mount(<AnchorElement id="test" offset={20} animate><h1>Test</h1></AnchorElement>, { context: ctx });
 
             const config = wrapper.node.getConfig();
 
-            expect(omit(config, ['children', 'isInside'])).to.not.deep.equal(defaultConfig);
-            expect(omit(config, ['children', 'isInside'])).to.not.deep.equal(ctx);
-            expect(omit(config, ['children', 'isInside'])).to.deep.equal(ctxWithProps);
+            expect(omit(config, ['children', 'isInside', 'id'])).to.not.deep.equal(defaultConfig);
+            expect(omit(config, ['children', 'isInside', 'id'])).to.not.deep.equal(ctx);
+            expect(omit(config, ['children', 'isInside', 'id'])).to.deep.equal(ctxWithProps);
         });
     });
 

@@ -11,7 +11,7 @@ import { Scroller } from './../src/scroller';
 // Utils
 const size = (instance) => Object.keys(instance._elementPanelRegister).length;
 const createAnchorElement = () => {
-    const wrapper = mount(<AnchorElement><h1>Test</h1></AnchorElement>);
+    const wrapper = mount(<AnchorElement id="test"><h1>Test</h1></AnchorElement>);
     spy(wrapper.node, 'getConfig');
 
     return wrapper.node;
