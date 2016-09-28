@@ -55,8 +55,8 @@ describe('AnchorElement', () => {
             const ctx = { offset: 10, events: { test: 0 }, animate: false, container: {} };
             const ctxWithProps = { ...ctx, offset: 20, animate: true };
             const wrapper = mount(
-                <AnchorElement id="test" offset={20} animate><h1>Test</h1></AnchorElement>,
-                { context: ctx }
+              <AnchorElement id="test" offset={20} animate><h1>Test</h1></AnchorElement>,
+              { context: ctx }
             );
 
             const config = wrapper.node.getConfig();
