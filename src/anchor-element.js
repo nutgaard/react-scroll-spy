@@ -34,12 +34,13 @@ AnchorElement.defaultProps = {
         (scrollOffset >= elemTopBound && scrollOffset <= elemBottomBound)
 };
 
+// eslint does not understand that all props are passed on through `getConfig`, hence disabling the rule
 AnchorElement.propTypes = {
     id: PT.string.isRequired,
-    offset: PT.number,
+    offset: PT.number, // eslint-disable-line react/no-unused-prop-types
     children: PT.element.isRequired,
-    isInside: PT.func,
-    duration: PT.oneOfType([PT.number, PT.func])
+    isInside: PT.func, // eslint-disable-line react/no-unused-prop-types
+    duration: PT.oneOfType([PT.number, PT.func]) // eslint-disable-line react/no-unused-prop-types
 };
 
 AnchorElement.contextTypes = CtxTypes.contextTypes;

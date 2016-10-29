@@ -1,4 +1,3 @@
-/* eslint-env browser  */
 /**
  * Utility functions
  */
@@ -50,9 +49,5 @@ export function omit(obj, keys = []) {
     return Object
         .keys(obj)
         .filter((key) => !keys.includes(key))
-        .reduce((acc, key) => {
-            // eslint-disable-next-line no-param-reassign
-            acc[key] = obj[key];
-            return acc;
-        }, {});
+        .reduce((acc, key) => ({ ...acc, [key]: obj[key] }), {});
 }
