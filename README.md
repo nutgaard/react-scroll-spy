@@ -69,5 +69,6 @@ This component has the newest react and react-router as peerdependenies, but wil
 If you test the component with lower versions of react and/or react-router please let me know so that the dependencies can be adjusted.
 
 ```
-"react": "^0.14.7"
+"react": "^0.14.7 || ^15.0.1"
+"react-dom": "^0.14.7 || ^15.0.1"
 ```
