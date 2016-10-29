@@ -1,4 +1,3 @@
-/* eslint-env browser  */
 /**
  * Exports a helper function which wraps clickable elements, hijacking onClick and passing it to the scroller
  */
@@ -64,7 +63,7 @@ function anchor(Component) {
         }
 
         render() {
-            const { onClick, ...props } = this.props; // eslint-disable-line no-use-before-define
+            const { onClick, ...props } = this.props;
             const restProps = {
                 ...omit(props, ['activeClass']),
                 onClick: (event) => handleClick(onClick, props.href, event)

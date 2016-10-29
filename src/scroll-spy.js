@@ -1,4 +1,3 @@
-/* eslint-env browser  */
 /**
  * The class responsible for keeping track of scrolling
  */

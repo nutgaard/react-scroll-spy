@@ -1,4 +1,3 @@
-/* eslint-env browser  */
 /**
  * Responsible for calculating the new scroll positions
  */

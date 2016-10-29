@@ -15,7 +15,8 @@ function Button(props) {
 }
 
 function Link(props) {
-    return <a {...props} />;
+    // `children` implicitly passed, eslint does not approve.
+    return <a {...props} />; // eslint-disable-line jsx-a11y/anchor-has-content
 }
 
 export const AnchorButton = anchor(Button);

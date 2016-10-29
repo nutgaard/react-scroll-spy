@@ -5,7 +5,10 @@ import { PropTypes as PT } from 'react';
 
 export const contextTypes = {
     offset: PT.number,
-    events: PT.object,
+    events: PT.shape({
+        start: PT.func,
+        end: PT.func
+    }),
     animate: PT.bool,
     container: PT.object
 };

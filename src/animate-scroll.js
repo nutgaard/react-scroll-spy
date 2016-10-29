@@ -1,4 +1,3 @@
-/* eslint-env browser  */
 /**
  * Class for executing and maintaining a smooth scroll-animation using TweenFunctions for easing
  */

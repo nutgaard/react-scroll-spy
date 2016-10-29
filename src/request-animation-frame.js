@@ -1,4 +1,3 @@
-/* eslint-env browser  */
 /**
  * requestAnimationFrame provider, with polyfill
  */
