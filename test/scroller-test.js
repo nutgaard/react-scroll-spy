@@ -2,19 +2,22 @@
 /* eslint-disable newline-per-chained-call */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import Enzyme, { mount } from 'enzyme';
 import { spy } from 'sinon';
 import { expect } from 'chai';
 import AnchorElement from './../src/anchor-element';
 import { Scroller } from './../src/scroller';
 
+Enzyme.configure({ adapter: new Adapter() });
+
 // Utils
 const size = (instance) => Object.keys(instance._elementPanelRegister).length;
 const createAnchorElement = () => {
     const wrapper = mount(<AnchorElement id="test"><h1>Test</h1></AnchorElement>);
-    spy(wrapper.node, 'getConfig');
+    spy(wrapper.instance(), 'getConfig');
 
-    return wrapper.node;
+    return wrapper.instance();
 };
 
 // So we can work on a clean instance for each test

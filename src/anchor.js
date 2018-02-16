@@ -1,7 +1,8 @@
 /**
  * Exports a helper function which wraps clickable elements, hijacking onClick and passing it to the scroller
  */
-import React, { PropTypes as PT } from 'react';
+import React from 'react';
+import { PropTypes as PT } from 'prop-types';
 import ReactDOM from 'react-dom';
 import scroller from './scroller';
 import ScrollSpy from './scroll-spy';

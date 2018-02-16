@@ -1,7 +1,7 @@
 /**
  * Proptypes used for the context
  */
-import { PropTypes as PT } from 'react';
+import { PropTypes as PT } from 'prop-types';
 
 export const contextTypes = {
     offset: PT.number,

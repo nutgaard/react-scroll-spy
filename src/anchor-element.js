@@ -1,7 +1,8 @@
 /**
  * Provides the anchor-panel which can be linked to by `anchor`-augmented componented
  */
-import React, { PropTypes as PT, Component } from 'react';
+import React, { Component } from 'react';
+import { PropTypes as PT } from 'prop-types';
 import scroller from './scroller';
 import CtxTypes from './ctx-types';
 import { filterUndefined } from './utils';
