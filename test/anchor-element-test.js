@@ -3,10 +3,13 @@
 import React from 'react';
 import { expect } from 'chai';
 import { spy } from 'sinon';
-import { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import Enzyme, { mount } from 'enzyme';
 import AnchorElement from './../src/anchor-element';
 import { defaultConfig } from './../src/ctx-types';
 import { omit } from './test-utils';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('AnchorElement', () => {
     it('should register with scroller on mount', () => {
@@ -37,7 +40,7 @@ describe('AnchorElement', () => {
     describe('getConfig', () => {
         it('should return defaults if no props are provided', () => {
             const wrapper = mount(<AnchorElement id="test"><h1>Test</h1></AnchorElement>);
-            const config = wrapper.node.getConfig();
+            const config = wrapper.instance().getConfig();
 
             expect(omit(config, ['children', 'isInside', 'id'])).to.deep.equal(defaultConfig);
         });
@@ -45,7 +48,7 @@ describe('AnchorElement', () => {
         it('should inherit from context', () => {
             const ctx = { offset: 10, events: { test: 0 }, animate: false, container: {} };
             const wrapper = mount(<AnchorElement id="test"><h1>Test</h1></AnchorElement>, { context: ctx });
-            const config = wrapper.node.getConfig();
+            const config = wrapper.instance().getConfig();
 
             expect(omit(config, ['children', 'isInside', 'id'])).to.not.deep.equal(defaultConfig);
             expect(omit(config, ['children', 'isInside', 'id'])).to.deep.equal(ctx);
@@ -59,7 +62,7 @@ describe('AnchorElement', () => {
               { context: ctx }
             );
 
-            const config = wrapper.node.getConfig();
+            const config = wrapper.instance().getConfig();
 
             expect(omit(config, ['children', 'isInside', 'id'])).to.not.deep.equal(defaultConfig);
             expect(omit(config, ['children', 'isInside', 'id'])).to.not.deep.equal(ctx);

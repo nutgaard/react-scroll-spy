@@ -3,9 +3,12 @@
 import React from 'react';
 import { expect } from 'chai';
 import { spy } from 'sinon';
-import { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import Enzyme, { mount } from 'enzyme';
 import anchor from './../src/anchor';
 import { AnchorButton } from './../src/index';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('Anchor', () => {
     it('should call prepareToScroll onClick', () => {
