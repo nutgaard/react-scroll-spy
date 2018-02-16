@@ -1,6 +1,6 @@
 {
   "name": "react-spy-scroll",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Scrollspy components for react",
   "main": "./dist/index.js",
   "scripts": {
