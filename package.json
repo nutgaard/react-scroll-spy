@@ -59,7 +59,7 @@
     "prop-types": "^15.5.8",
     "react": "16.6.0",
     "react-addons-test-utils": "15.4.1",
-    "react-dom": "16.2.0",
+    "react-dom": "16.6.0",
     "sinon": "1.17.6",
     "webpack": "1.14.0",
     "webpack-dev-server": "1.16.2"
