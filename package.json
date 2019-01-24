@@ -44,7 +44,7 @@
     "chai": "3.5.0",
     "codecov": "1.0.1",
     "enzyme": "3.8.0",
-    "enzyme-adapter-react-16": "1.1.1",
+    "enzyme-adapter-react-16": "1.8.0",
     "eslint": "3.12.2",
     "eslint-config-airbnb": "13.0.0",
     "eslint-plugin-import": "2.2.0",
